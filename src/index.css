@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  /* Brand palette — tropical boutique luxury */
+  --color-sand: #f4f1ea;
+  --color-cream: #fdfbf7;
+  --color-teal: #0e4b5c;
+  --color-teal-dark: #0a3947;
+  --color-teal-light: #1c6d82;
+  --color-ink: #1a1a1a;
+  --color-muted: #6f6d65;
+  --color-gold: #c9a24b;
+  --color-jade: #2f855a;
+  --color-brass: #c5a059;
+  --color-line: rgba(26, 26, 26, 0.1);
+
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer components {
+  .hairline {
+    height: 1px;
+    width: 2.5rem;
+    background-color: var(--color-brass);
+  }
+
+  .btn-lux {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0;
+    background-color: var(--color-teal);
+    padding: 0.875rem 2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-cream);
+    transition: background-color 150ms ease-out, color 150ms ease-out;
+  }
+
+  .btn-lux:hover {
+    background-color: var(--color-teal-dark);
+  }
+
+  .btn-lux:active {
+    transform: scale(0.97);
+  }
+
+  .btn-lux-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0;
+    border: 1px solid color-mix(in srgb, var(--color-brass) 60%, transparent);
+    background-color: transparent;
+    padding: 0.875rem 2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-teal);
+    transition: background-color 150ms ease-out, border-color 150ms ease-out;
+  }
+
+  .btn-lux-outline:hover {
+    background-color: color-mix(in srgb, var(--color-brass) 10%, transparent);
+    border-color: var(--color-brass);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-sand);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-teal);
+    color: var(--color-cream);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
